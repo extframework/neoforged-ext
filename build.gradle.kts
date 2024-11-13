@@ -7,6 +7,10 @@ plugins {
     id("dev.extframework.common") version "1.0.36" apply false
 }
 
+task("publishExtensions") {
+    dependsOn(allprojects.map { it.tasks.named("publishExtension") })
+}
+
 allprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "dev.extframework.mc")

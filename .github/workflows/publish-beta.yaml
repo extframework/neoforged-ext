@@ -17,4 +17,4 @@ jobs:
       - name: Grant permissions to Gradle
         run: chmod +x gradlew
       - name: Publish with Gradle
-        run: ./gradlew mappings:publishExtensions -Pcreds.ext.key='${{ secrets.EXTENSION_REPO_KEY }}' -Dorg.gradle.jvmargs=-Xmx512m
+        run: ./gradlew publishExtensions -Pcreds.ext.key='${{ secrets.EXTENSION_REPO_KEY }}' -Dorg.gradle.jvmargs=-Xmx512m
