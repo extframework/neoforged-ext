@@ -8,7 +8,7 @@ plugins {
 }
 
 task("publishExtensions") {
-    dependsOn(allprojects.map { it.tasks.named("publishExtension") })
+    dependsOn(":mappings:publishExtension")
 }
 
 allprojects {
