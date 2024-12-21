@@ -10,12 +10,12 @@ version = "1.0-BETA"
 tasks.launch {
     mcVersion = "1.8.9"
     targetNamespace = "mcp-legacy:deobfuscated"
-    setExecutable("/Users/durganmcbroom/Downloads/jdk8u432-b06-jre/Contents/Home/bin/java")
-
-    args("--mc-provider-repository=local@/Users/durganmcbroom/.m2/repository", "--force-provider=dev.extframework.minecraft:minecraft-provider-def:2.0.12-SNAPSHOT")
 }
 
 extension {
+    model {
+        name = "mcp-mappings"
+    }
     partitions {
         main {
             extensionClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingExtension"

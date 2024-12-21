@@ -14,5 +14,6 @@ pluginManagement {
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
-rootProject.name = "neoforged-ext"
+rootProject.name = "xforge-ext"
 include("mappings")
+include("legacy-fml")
