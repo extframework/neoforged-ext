@@ -5,7 +5,7 @@ import dev.extframework.gradle.common.dm.jobs
 import dev.extframework.gradle.common.toolingApi
 import dev.extframework.gradle.publish.ExtensionPublication
 
-version = "1.0-BETA"
+version = "1.0.1-BETA"
 
 tasks.launch {
     mcVersion = "1.8.9"
