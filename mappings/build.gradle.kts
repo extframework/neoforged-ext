@@ -5,7 +5,7 @@ import dev.extframework.gradle.common.dm.jobs
 import dev.extframework.gradle.common.toolingApi
 import dev.extframework.gradle.publish.ExtensionPublication
 
-version = "1.0.1-BETA"
+version = "1.0.2-BETA"
 
 tasks.launch {
     mcVersion = "1.8.9"
@@ -27,7 +27,7 @@ extension {
         tweaker {
             tweakerClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingTweaker"
             dependencies {
-                toolingApi(version = "1.0.3-SNAPSHOT")
+                toolingApi()
                 jobs()
                 archiveMapper(mcpLegacy = true)
                 commonUtil()
