@@ -5,7 +5,7 @@ import dev.extframework.gradle.common.dm.jobs
 import dev.extframework.gradle.common.toolingApi
 import dev.extframework.gradle.publish.ExtensionPublication
 
-version = "1.0.2-BETA"
+version = "1.0.4-BETA"
 
 tasks.launch {
     mcVersion = "1.8.9"
@@ -20,7 +20,7 @@ extension {
         main {
             extensionClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingExtension"
             dependencies {
-                coreApi()
+                implementation("dev.extframework.core:entrypoint:1.0-BETA")
             }
         }
 

@@ -1,9 +1,9 @@
 package dev.extframework.extension.neoforge.mapping
 
-import dev.extframework.core.api.Extension
+import dev.extframework.core.entrypoint.Entrypoint
 
-class NeoforgeMappingExtension : Extension() {
+class NeoforgeMappingExtension : Entrypoint() {
     override fun init() {
-        // Nothing to do
+
     }
 }

@@ -3,7 +3,7 @@ import dev.extframework.gradle.common.extFramework
 plugins {
     kotlin("jvm") version "2.0.0"
 
-    id("dev.extframework.mc") version "1.2.29" apply false
+    id("dev.extframework.mc") version "1.2.31" apply false
     id("dev.extframework.common") version "1.0.45" apply false
 }
 
@@ -25,6 +25,7 @@ allprojects {
         maven {
             url = uri("https://repo.extframework.dev/registry")
         }
+        mavenLocal()
     }
 
     kotlin {
