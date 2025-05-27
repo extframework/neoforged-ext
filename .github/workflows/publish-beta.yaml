@@ -17,7 +17,7 @@ jobs:
       - name: Grant permissions to Gradle
         run: chmod +x gradlew
       - name: Setup build cache
-        run: ./gradlew -Dorg.gradle.jvmargs=-Xmx4096m
+        run: ./gradlew -Dorg.gradle.jvmargs=-Xmx4096m --stacktrace
         continue-on-error: true
       - name: Publish with Gradle
         if: always()
