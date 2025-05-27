@@ -1,3 +1,7 @@
+import dev.extframework.core.main.main
+import dev.extframework.gradle.common.archiveMapper
+import dev.extframework.gradle.common.*
+import dev.extframework.gradle.common.dm.jobs
 import dev.extframework.gradle.publish.ExtensionPublication
 
 version = "1.0.5-BETA"
@@ -10,6 +14,7 @@ extension {
         tweaker {
             tweakerClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingTweaker"
             dependencies {
+                archiveMapper(mcpLegacy = true)
                 implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
             }
         }

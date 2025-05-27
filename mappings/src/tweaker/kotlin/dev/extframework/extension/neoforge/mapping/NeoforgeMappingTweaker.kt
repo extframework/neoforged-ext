@@ -5,7 +5,6 @@ import com.durganmcbroom.jobs.job
 import dev.extframework.common.util.resolve
 import dev.extframework.core.minecraft.environment.mappingProvidersAttrKey
 import dev.extframework.tooling.api.environment.ExtensionEnvironment
-import dev.extframework.tooling.api.environment.extract
 import dev.extframework.tooling.api.environment.wrkDirAttrKey
 import dev.extframework.tooling.api.tweaker.EnvironmentTweaker
 
