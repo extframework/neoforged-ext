@@ -58,12 +58,12 @@ class McpLegacyMappingProvider(
             }
         }
 
-        val versions = jacksonObjectMapper().readValue<Map<String, Map<String, List<Int>>>>(versionsPath.toFile())
+        val versions: Map<String, Map<String, List<Int>>> = jacksonObjectMapper().readValue<Map<String, Map<String, List<Int>>>>(versionsPath.toFile())
 
-        val channels = versions[minecraftVersion] ?: return null
+        val channels: Map<String, List<Int>> = versions[minecraftVersion] ?: return null
 
-        return channels["stable"]?.max()?.let { "stable" to it.toString() }
-            ?: channels["snapshot"]?.max()?.let { "stable" to it.toString() }
+        return channels["stable"]?.maxOrNull()?.let { "stable" to it.toString() }
+            ?: channels["snapshot"]?.maxOrNull()?.let { "stable" to it.toString() }
     }
 }
 

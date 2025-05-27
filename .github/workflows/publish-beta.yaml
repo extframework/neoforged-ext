@@ -17,8 +17,8 @@ jobs:
       - name: Grant permissions to Gradle
         run: chmod +x gradlew
       - name: Setup build cache
-        run: ./gradlew -Dorg.gradle.jvmargs=-Xmx4096m --stacktrace
+        run: ./gradlew -Dorg.gradle.jvmargs=-Xmx4096m
         continue-on-error: true
       - name: Publish with Gradle
         if: always()
-        run: ./gradlew publishExtensions -Pcreds.ext.key='${{ secrets.EXTENSION_REPO_KEY }}' -Dorg.gradle.jvmargs=-Xmx4096m --no-daemon --stacktrace
+        run: ./gradlew publishExtensions -Pcreds.ext.key='${{ secrets.EXTENSION_REPO_KEY }}' -Dorg.gradle.jvmargs=-Xmx4096m --no-daemon
