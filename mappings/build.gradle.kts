@@ -1,36 +1,15 @@
-import dev.extframework.gradle.common.archiveMapper
-import dev.extframework.gradle.common.commonUtil
-import dev.extframework.gradle.common.coreApi
-import dev.extframework.gradle.common.dm.jobs
-import dev.extframework.gradle.common.toolingApi
 import dev.extframework.gradle.publish.ExtensionPublication
 
-version = "1.0.4-BETA"
-
-tasks.launch {
-    mcVersion = "1.8.9"
-    targetNamespace = "mcp-legacy:deobfuscated"
-}
+version = "1.0.5-BETA"
 
 extension {
     model {
         name = "mcp-mappings"
     }
     partitions {
-        main {
-            extensionClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingExtension"
-            dependencies {
-                implementation("dev.extframework.core:entrypoint:1.0-BETA")
-            }
-        }
-
         tweaker {
             tweakerClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingTweaker"
             dependencies {
-                toolingApi()
-                jobs()
-                archiveMapper(mcpLegacy = true)
-                commonUtil()
                 implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
             }
         }
@@ -40,6 +19,7 @@ extension {
         name = "Neoforged Mappings"
         description = "An extension providing MCP (legacy) mappings for Neoforged"
         developers.add("extframework")
+        app = "minecraft"
     }
 }
 

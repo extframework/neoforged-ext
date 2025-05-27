@@ -3,21 +3,24 @@ import dev.extframework.gradle.common.extFramework
 plugins {
     kotlin("jvm") version "2.0.0"
 
-    id("dev.extframework.mc") version "1.2.31" apply false
-    id("dev.extframework.common") version "1.0.45" apply false
+    id("dev.extframework") version "1.3.2" apply false
+    id("dev.extframework.common") version "1.0.52" apply false
+}
+
+repositories {
+    mavenCentral()
 }
 
 task("publishExtensions") {
     dependsOn(":mappings:publishExtension")
 }
 
-allprojects {
+subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "dev.extframework.mc")
+    apply(plugin = "dev.extframework")
     apply(plugin = "dev.extframework.common")
 
     group = "dev.extframework.extension"
-    version = "1.0-BETA"
 
     repositories {
         mavenCentral()
@@ -25,7 +28,6 @@ allprojects {
         maven {
             url = uri("https://repo.extframework.dev/registry")
         }
-        mavenLocal()
     }
 
     kotlin {

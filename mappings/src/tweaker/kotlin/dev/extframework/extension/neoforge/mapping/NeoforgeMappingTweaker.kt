@@ -11,8 +11,8 @@ import dev.extframework.tooling.api.tweaker.EnvironmentTweaker
 
 class NeoforgeMappingTweaker : EnvironmentTweaker {
     override fun tweak(environment: ExtensionEnvironment): Job<Unit> = job {
-        environment[mappingProvidersAttrKey].extract().add(
-            McpLegacyMappingProvider(environment[wrkDirAttrKey].extract().value resolve "mappings")
+        environment[mappingProvidersAttrKey].add(
+            McpLegacyMappingProvider(environment[wrkDirAttrKey].value resolve "mappings")
         )
     }
 }
