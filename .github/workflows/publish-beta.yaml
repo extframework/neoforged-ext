@@ -21,4 +21,4 @@ jobs:
         continue-on-error: true
       - name: Publish with Gradle
         if: always()
-        run: ./gradlew publishExtensions -Pcreds.ext.key='${{ secrets.EXTENSION_REPO_KEY }}' -Dorg.gradle.jvmargs=-Xmx4096m --no-daemon
+        run: ./gradlew publishExtensions -Pcreds.ext.key='${{ secrets.EXTENSION_REPO_KEY }}' -Dorg.gradle.jvmargs=-Xmx4096m --no-daemon --stacktrace
