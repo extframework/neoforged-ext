@@ -3,7 +3,7 @@ import dev.extframework.gradle.common.extFramework
 plugins {
     kotlin("jvm") version "2.0.0"
 
-    id("dev.extframework") version "1.3.2" apply false
+    id("dev.extframework") version "1.3.3" apply false
     id("dev.extframework.common") version "1.0.53" apply false
 }
 
