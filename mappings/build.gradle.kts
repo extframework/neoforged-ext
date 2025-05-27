@@ -1,7 +1,4 @@
-import dev.extframework.core.main.main
 import dev.extframework.gradle.common.archiveMapper
-import dev.extframework.gradle.common.*
-import dev.extframework.gradle.common.dm.jobs
 import dev.extframework.gradle.publish.ExtensionPublication
 
 version = "1.0.5-BETA"
