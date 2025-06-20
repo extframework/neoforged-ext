@@ -1,7 +1,8 @@
 import dev.extframework.gradle.common.archiveMapper
+import dev.extframework.gradle.common.archiveMapperMcpLegacy
 import dev.extframework.gradle.publish.ExtensionPublication
 
-version = "1.0.5-BETA"
+version = "1.0.6-BETA"
 
 extension {
     model {
@@ -11,8 +12,9 @@ extension {
         tweaker {
             tweakerClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingTweaker"
             dependencies {
-                archiveMapper(mcpLegacy = true)
-                implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
+                implementation(archiveMapper())
+                implementation(archiveMapperMcpLegacy())
+                implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.0")
             }
         }
     }
