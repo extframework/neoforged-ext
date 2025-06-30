@@ -2,7 +2,7 @@ import dev.extframework.gradle.common.archiveMapper
 import dev.extframework.gradle.common.archiveMapperMcpLegacy
 import dev.extframework.gradle.publish.ExtensionPublication
 
-version = "1.0.6-BETA"
+version = "1.0.7-BETA"
 
 extension {
     model {

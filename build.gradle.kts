@@ -3,8 +3,8 @@ import dev.extframework.gradle.common.extFramework
 plugins {
     kotlin("jvm") version "2.0.0"
 
-    id("dev.extframework") version "1.4" apply false
-    id("dev.extframework.common") version "1.1" apply false
+    id("dev.extframework") version "1.4.1" apply false
+    id("dev.extframework.common") version "1.1.1" apply false
 }
 
 repositories {
