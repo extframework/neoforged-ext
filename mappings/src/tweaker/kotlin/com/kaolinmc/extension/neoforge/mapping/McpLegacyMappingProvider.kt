@@ -1,13 +1,13 @@
-package dev.extframework.extension.neoforge.mapping
+package com.kaolinmc.extension.neoforge.mapping
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import dev.extframework.archive.mapper.ArchiveMapping
-import dev.extframework.archive.mapper.MappingsProvider
-import dev.extframework.archive.mapper.parsers.mcp.MCPMappingParser
-import dev.extframework.archive.mapper.parsers.mcp.MCPMappingResolver
-import dev.extframework.common.util.make
-import dev.extframework.common.util.resolve
+import com.kaolinmc.archive.mapper.ArchiveMapping
+import com.kaolinmc.archive.mapper.MappingsProvider
+import com.kaolinmc.archive.mapper.parsers.mcp.MCPMappingParser
+import com.kaolinmc.archive.mapper.parsers.mcp.MCPMappingResolver
+import com.kaolinmc.common.util.make
+import com.kaolinmc.common.util.resolve
 import java.io.FileOutputStream
 import java.net.URL
 import java.net.URLConnection
@@ -45,7 +45,7 @@ class McpLegacyMappingProvider(
         val versionsPath = path resolve "mcp-legacy_versions.json"
         if (versionsPath.make()) {
             val connection: URLConnection = URL(VERSIONS_URL).openConnection()
-            connection.addRequestProperty("User-Agent", "extframework")
+            connection.addRequestProperty("User-Agent", "kaolin")
 
             connection.getInputStream().use { versionsIn ->
                 FileOutputStream(versionsPath.toFile()).use { versionsOut ->

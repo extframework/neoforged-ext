@@ -1,6 +1,6 @@
-import dev.extframework.gradle.common.archiveMapper
-import dev.extframework.gradle.common.archiveMapperMcpLegacy
-import dev.extframework.gradle.publish.ExtensionPublication
+import com.kaolinmc.gradle.common.archiveMapper
+import com.kaolinmc.gradle.common.archiveMapperMcpLegacy
+import com.kaolinmc.kiln.publish.ExtensionPublication
 
 version = "1.0.7-BETA"
 
@@ -10,7 +10,7 @@ extension {
     }
     partitions {
         tweaker {
-            tweakerClass = "dev.extframework.extension.neoforge.mapping.NeoforgeMappingTweaker"
+            tweakerClass = "com.kaolinmc.extension.neoforge.mapping.NeoforgeMappingTweaker"
             dependencies {
                 implementation(archiveMapper())
                 implementation(archiveMapperMcpLegacy())
@@ -22,7 +22,7 @@ extension {
     metadata {
         name = "Neoforged Mappings"
         description = "An extension providing MCP (legacy) mappings for Neoforged"
-        developers.add("extframework")
+        developers.add("kaolin")
         app = "minecraft"
     }
 }
@@ -33,7 +33,7 @@ publishing {
     }
     repositories {
         maven {
-            url = uri("https://repo.extframework.dev")
+            url = uri("https://repo.kaolinmc.com")
             credentials {
                 password = properties["creds.ext.key"] as? String
             }

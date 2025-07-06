@@ -1,10 +1,10 @@
-import dev.extframework.gradle.common.extFramework
+import com.kaolinmc.gradle.common.kaolin
 
 plugins {
     kotlin("jvm") version "2.0.0"
 
-    id("dev.extframework") version "1.4.1" apply false
-    id("dev.extframework.common") version "1.1.1" apply false
+    id("kaolin.kiln") version "0.1" apply false
+    id("com.kaolinmc.common") version "0.1" apply false
 }
 
 repositories {
@@ -17,18 +17,15 @@ task("publishExtensions") {
 
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "dev.extframework")
-    apply(plugin = "dev.extframework.common")
+    apply(plugin = "kaolin.kiln")
+    apply(plugin = "com.kaolinmc.common")
 
-    group = "dev.extframework.extension"
+    group = "com.kaolinmc.extension"
 
     repositories {
         mavenLocal()
         mavenCentral()
-        extFramework()
-        maven {
-            url = uri("https://repo.extframework.dev/registry")
-        }
+        kaolin()
     }
 
     kotlin {

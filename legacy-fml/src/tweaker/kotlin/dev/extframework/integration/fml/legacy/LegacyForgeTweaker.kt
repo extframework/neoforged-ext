@@ -1,4 +1,4 @@
-package dev.extframework.integration.fml.legacy
+package com.kaolinmc.integration.fml.legacy
 
 //class LegacyForgeTweaker : EnvironmentTweaker {
 //}
