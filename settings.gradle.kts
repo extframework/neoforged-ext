@@ -15,4 +15,4 @@ plugins {
 }
 rootProject.name = "xforge-ext"
 include("mappings")
-include("legacy-fml")
+include("loader")

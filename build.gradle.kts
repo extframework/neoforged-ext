@@ -3,8 +3,8 @@ import com.kaolinmc.gradle.common.kaolin
 plugins {
     kotlin("jvm") version "2.0.0"
 
-    id("kaolin.kiln") version "0.1" apply false
-    id("com.kaolinmc.common") version "0.1" apply false
+    id("kaolin.kiln") version "0.1.6" apply false
+    id("com.kaolinmc.common") version "0.1.6" apply false
 }
 
 repositories {

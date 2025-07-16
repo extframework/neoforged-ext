@@ -1,0 +1,5 @@
+[repositories]
+local = true
+
+[parents]
+minecraft = { group = "com.kaolinmc.core", version = "1.0.9-BETA" }

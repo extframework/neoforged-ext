@@ -4,6 +4,7 @@ import com.kaolinmc.kiln.publish.ExtensionPublication
 
 version = "1.0.7-BETA"
 
+
 extension {
     model {
         name = "mcp-mappings"
