@@ -30,6 +30,7 @@ val launch1_21_4 by tasks.registering(LaunchMinecraft::class) {
     jvmArgs(
         "--add-opens",
         "java.base/java.nio.file.spi=ALL-UNNAMED",
+        "-Dlog4j2.configurationFile=/Users/durganmcbroom/IdeaProjects/FancyModLoader/tests/build/moddev/clientDataLog4j2.xml"
 //        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005"
     )
 }

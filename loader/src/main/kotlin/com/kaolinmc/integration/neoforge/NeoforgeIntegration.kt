@@ -209,13 +209,10 @@ class NeoforgeIntegration : Entrypoint() {
             .apply { trySetAccessible() }.get(transformingLoader)
 
         // TODO this is a hacky way to prevent reentrance in sponge/mixin
-        val threadSecurity = ConcurrentHashMap<Thread, MutableSet<String>>()
+        val threadSecurity = ConcurrentHashMap<Thread, Unit>()
 
         NeoForgeTweaker.mixinDelegateAgent = agent@{ name, node ->
-            val set = threadSecurity.computeIfAbsent(Thread.currentThread()) {
-                HashSet()
-            }
-            if (set.add(name)) {
+            if (threadSecurity.put(Thread.currentThread(), Unit) != null) {
                 return@agent node
             }
 
@@ -228,8 +225,8 @@ class NeoforgeIntegration : Entrypoint() {
                 listOfNotNull(target.node.handle),
                 0
             )
-            node?.accept(writer) ?: return@agent null
-            val bytes = writer.toByteArray()
+            node?.accept(writer)
+            val bytes = if (node == null) byteArrayOf() else writer.toByteArray()
 
             try {
                 val transformed = classTransformer::class.java.getDeclaredMethod(
@@ -250,7 +247,7 @@ class NeoforgeIntegration : Entrypoint() {
                 e.printStackTrace()
             }
 
-            set.remove(name)
+            threadSecurity.remove(Thread.currentThread())
 
             node
         }
