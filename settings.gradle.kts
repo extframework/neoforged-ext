@@ -16,3 +16,5 @@ plugins {
 rootProject.name = "xforge-ext"
 include("mappings")
 include("loader")
+
+include("loader:null-launch-target")

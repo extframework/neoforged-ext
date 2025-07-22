@@ -29,14 +29,19 @@ class NeoForgeArtifactRepository :
 
             val config = basicObjectMapper.readValue<NeoConfig>(resource.open().toByteArray())
 
+            val core = settings.layout.resourceOf(
+                "net.neoforged",
+                "neoforge",
+                request.descriptor.version,
+                "universal",
+                "jar"
+            )
+
             return NeoForgeArtifactMetadata(
                 request.descriptor,
                 listOf(),
-                config.copy(
-                    libraries = config.libraries + setOf(
-                        "org.slf4j:slf4j-api:2.0.16"
-                    )
-                )
+                config,
+                core
             )
         } catch (e: ResourceNotFoundException) {
             throw MetadataRequestException.MetadataNotFound(request.descriptor, "config.json", e)

@@ -29,7 +29,7 @@ class NeoForgeLibraryResolver(
         get() = SimpleMaven
 
     override fun pathForDescriptor(descriptor: SimpleMavenDescriptor, classifier: String, type: String): Path {
-        return Path("neoforge", "libraries") resolve Path(
+        return Path(
             descriptor.group.replace('.', File.separatorChar),
             descriptor.artifact,
             descriptor.version,

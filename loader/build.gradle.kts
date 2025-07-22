@@ -5,10 +5,19 @@ import com.kaolinmc.kiln.publish.ExtensionPublication
 import com.kaolinmc.minecraft.MojangNamespaces
 import com.kaolinmc.minecraft.task.LaunchMinecraft
 import com.kaolinmc.tooling.api.extension.ExtensionRepository
-import org.gradle.kotlin.dsl.assign
 
 version = "1.0-BETA"
 group = "com.kaolinmc.integration"
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://maven.neoforged.net/releases")
+    }
+    maven {
+        url = uri("https://libraries.minecraft.net")
+    }
+}
 
 val launch1_21_4 by tasks.registering(LaunchMinecraft::class) {
     dependsOn(tasks.named("publishToMavenLocal"))
@@ -16,7 +25,13 @@ val launch1_21_4 by tasks.registering(LaunchMinecraft::class) {
     javaLauncher.set(javaToolchains.launcherFor {
         languageVersion.set(JavaLanguageVersion.of(21))
     })
-    mcVersion = "1.21.4"
+    mcVersion = "1.21.7"
+
+    jvmArgs(
+        "--add-opens",
+        "java.base/java.nio.file.spi=ALL-UNNAMED",
+//        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005"
+    )
 }
 
 extension {
@@ -26,7 +41,7 @@ extension {
                 dependencies.addAll(
                     EvaluatingDependency.Raw(
                         mapOf(
-                            "neoforge-version" to "21.7.23-beta"
+                            "neoforge-version" to "21.7.23-beta",
                         )
                     ),
                 )
@@ -46,6 +61,12 @@ extension {
     partitions {
         main {
             extensionClass = "com.kaolinmc.integration.neoforge.NeoforgeIntegration"
+            dependencies {
+//                addDependency(EvaluatingDependency.Raw(mapOf(
+//                   "descriptor" to "net.neoforged:neoforge:21.7.25-beta:installer",
+//                    "isTransitive" to "false"
+//                )))
+            }
         }
         tweaker {
             tweakerClass = "com.kaolinmc.integration.neoforge.NeoForgeTweaker"
@@ -64,6 +85,18 @@ extension {
     }
 }
 
+dependencies {
+    "tweakerImplementation"("net.neoforged.fancymodloader:loader:9.0.14")
+    "tweakerImplementation"("net.neoforged.fancymodloader:securejarhandler:9.0.14")
+
+    implementation("net.neoforged.fancymodloader:securejarhandler:9.0.14")
+    implementation("net.fabricmc:sponge-mixin:0.14.0+mixin.0.8.6")
+    implementation("net.neoforged:JarJarFileSystems:0.4.1")
+    implementation("net.neoforged.fancymodloader:loader:9.0.14")
+    implementation("net.neoforged.fancymodloader:bootstraplauncher:9.0.14")
+//    implementation("net.neoforged:neoforge:21.7.25-beta:installer")
+}
+
 kotlin {
     jvmToolchain(21)
 }
@@ -80,4 +113,11 @@ publishing {
             }
         }
     }
+}
+
+tasks.named<org.gradle.jvm.tasks.Jar>("tweakerJar") {
+    manifest {
+        attributes("Automatic-Module-Name" to "kaolinmc.integration.forge.tweaker")
+    }
+    from(project("null-launch-target").tasks.getByName("jar"))
 }

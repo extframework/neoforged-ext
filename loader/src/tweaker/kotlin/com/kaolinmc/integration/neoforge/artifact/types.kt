@@ -4,6 +4,7 @@ import com.durganmcbroom.artifact.resolver.ArtifactMetadata
 import com.durganmcbroom.artifact.resolver.ArtifactRequest
 import com.durganmcbroom.artifact.resolver.simple.maven.SimpleMavenRepositorySettings
 import com.durganmcbroom.artifact.resolver.simple.maven.layout.SimpleMavenDefaultLayout
+import com.durganmcbroom.resources.Resource
 import com.durganmcbroom.resources.ResourceAlgorithm
 import com.kaolinmc.integration.neoforge.metadata.NeoConfig
 
@@ -31,7 +32,8 @@ class NeoForgeArtifactRequest(
 class NeoForgeArtifactMetadata(
     descriptor: NeoForgeDescriptor,
     parents: List<Nothing>,
-    val config: NeoConfig
+    val config: NeoConfig,
+    val core: Resource
 ) : ArtifactMetadata<NeoForgeDescriptor, Nothing>(
     descriptor, parents
 )
